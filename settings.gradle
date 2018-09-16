@@ -1,0 +1,1 @@
+include ':app', ':runtimepermission', ':audio', ':audio2', ':audio3', ':view', ':share'
