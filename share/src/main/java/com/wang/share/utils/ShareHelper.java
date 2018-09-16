@@ -1,6 +1,7 @@
 package com.wang.share.utils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
@@ -40,16 +41,16 @@ public class ShareHelper {
     public static final String TYPE_VIDEO = "video/*";
     public static final String TYPE_FILE = "*/*";
 
-    private Activity activity;
+    private Context context;
     private String mimeType = TYPE_FILE;
-    private String title;
+    private String title; // 分享选择窗口的标题
 
-    private ShareHelper(Activity activity) {
-        this.activity = activity;
+    private ShareHelper(Context context) {
+        this.context = context;
     }
 
-    public static ShareHelper create(Activity activity) {
-        return new ShareHelper(activity);
+    public static ShareHelper create(Context context) {
+        return new ShareHelper(context);
     }
 
     public ShareHelper setMimeType(String mimeType) {
@@ -94,7 +95,7 @@ public class ShareHelper {
     }
 
     private void checkParametersValid() {
-        if (activity == null) {
+        if (context == null) {
             throw new IllegalArgumentException("Activity can't be null!");
         }
     }
@@ -102,9 +103,9 @@ public class ShareHelper {
     private void share(Intent shareIntent) {
         shareIntent = Intent.createChooser(shareIntent, title);
 
-        if (shareIntent.resolveActivity(activity.getPackageManager()) != null) {
+        if (shareIntent.resolveActivity(context.getPackageManager()) != null) {
             try {
-                activity.startActivity(shareIntent);
+                context.startActivity(shareIntent);
             } catch (Exception e) {
                 Log.e(TAG, Log.getStackTraceString(e));
             }
