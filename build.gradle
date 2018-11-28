@@ -1,18 +1,33 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-buildscript {
-    
-    repositories {
+buildscript { // 配置 ScriptHandler
+    ext {
+        buildToolsVersion = "28.0.3"
+        androidxLibVersion = "1.0.0"
+        coreVersion = "1.0.0"
+        extJUnitVersion = "1.0.0"
+        runnerVersion = "1.1.0"
+        rulesVersion = "1.1.0"
+        espressoVersion = "3.1.0"
+        uiautomatorVersion = "2.2.0"
+        gradle_version = '3.1.4'
+        kotlin_version = '1.2.50'
+    }
+
+    repositories { // --> RepositoryHandler（此时是 ScriptHandler 的成员）
         google()
         jcenter()
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
-        
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+    dependencies { // --> DependencyHandler（此时是 ScriptHandler 的成员）
+        // 仅包含一个 Configuration："classpath";
+        classpath "com.android.tools.build:gradle:${gradle_version}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}"
     }
+
+    println "getSourceFile = " + getSourceFile()
+    println "getSourceURI = " + getSourceURI()
+    getDependencies().add(ScriptHandler.CLASSPATH_CONFIGURATION, "com.android.tools.build:gradle:${gradle_version}")
 }
 
 allprojects {
@@ -22,6 +37,24 @@ allprojects {
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+task printTask {
+    group "custom"
+    println "rootProject=${getRootProject()}"
+    println "getRootDir=${getRootDir()}"
+    println "getBuildDir=${getBuildDir()}"
+    println "getBuildFile=${getBuildFile()}"
+    println "getParent=${getParent()}"
+    println "Project.getName=${rootProject.getName()}"
+    println "getDisplayName=${getDisplayName()}"
+    println "getDescription=${getDescription()}"
+    println "Project.getGroup=${rootProject.getGroup()}"
+    childProjects.each {k,v ->
+        println "key=$k, value=$v"
+    }
+    allprojects.each {
+        println "it=${it}"
+    }
+    subprojects.each {
+        println "sub.it=${it}"
+    }
 }

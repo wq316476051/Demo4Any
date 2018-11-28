@@ -1,14 +1,19 @@
 package com.wang.view.listview;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.text.Layout;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -22,19 +27,29 @@ import java.util.List;
  *     SimpleAdapter (每条多个%s的情况, { Checkable, TextView, ImageView })
  *     CursorAdapter
  */
-public class ListViewActivity extends Activity implements AdapterView.OnItemClickListener {
+public class ListViewActivity extends Activity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ListView listView = new ListView(this);
+
+        LoadMoreListView listView = new LoadMoreListView(this);
         listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, getData()));
-        listView.setOnItemClickListener(this);
+        listView.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
+        });
         setContentView(listView);
 
-        ArrayAdapter arrayAdapter;
-        SimpleAdapter simpleAdapter;
-        FragmentPagerAdapter fragmentPagerAdapter;
+
+        TextView emptyView = new TextView(this);
+        emptyView.setTextColor(Color.RED);
+        emptyView.setText("Nothing");
+
+//        ((ViewGroup) listView.getParent()).addView(emptyView);
+//        listView.setEmptyView(emptyView);
+
+        listView.setLoadMoreView(emptyView);
+        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        listView.clearChoices();
     }
 
     private List<String> datas;
@@ -44,13 +59,28 @@ public class ListViewActivity extends Activity implements AdapterView.OnItemClic
             datas.add("Android");
             datas.add("Java");
             datas.add("Go");
+            datas.add("Android");
+            datas.add("Java");
+            datas.add("Go");
+            datas.add("Android");
+            datas.add("Java");
+            datas.add("Go");
+            datas.add("Android");
+            datas.add("Java");
+            datas.add("Go");
+            datas.add("Android");
+            datas.add("Java");
+            datas.add("Go");
+            datas.add("Android");
+            datas.add("Java");
+            datas.add("Go");
+            datas.add("Android");
+            datas.add("Java");
+            datas.add("Go");
+            datas.add("Android");
+            datas.add("Java");
+            datas.add("Go");
         }
         return datas;
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String s = getData().get(position);
-        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
     }
 }

@@ -1,1 +1,17 @@
-include ':app', ':runtimepermission', ':audio', ':audio2', ':audio3', ':view', ':share'
+//include ':app', ':rendarscript', ':unittest', ':gradle'
+//include ':app',':view', ':actionmode', ':actionbar', ':window', ':themeandstyle'
+//rootProject.name = 'Demo4Any'
+
+include ':app', ':activity'
+include ':storage'
+include ':libraries:lib1', ':libraries:lib2'
+
+//include ':runtimepermission'
+//include ':share'
+//include ':keyguard'
+
+include ':view'
+//include ':window', ':themeandstyle'
+//include ':actionmode', ':actionbar'
+
+include ':audio'
