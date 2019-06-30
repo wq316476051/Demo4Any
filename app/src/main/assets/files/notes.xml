@@ -1,0 +1,43 @@
+<notes>
+    <note id="01" title="开发环境">
+        <subnote title="Android Studio">
+            <item title="External Tools" filename=""/>
+        </subnote>
+        <subnote title="Gradle">
+
+        </subnote>
+        <subnote title="Git">
+
+        </subnote>
+    </note>
+
+    <note title="资源/数据">
+        <subnote title="">
+
+        </subnote>
+        <subnote title="">
+
+        </subnote>
+    </note>
+
+    <note title="四大组件">
+        <subnote title="Application">
+
+        </subnote>
+        <subnote title="Activity">
+
+        </subnote>
+        <subnote title="Fragment">
+
+        </subnote>
+        <subnote title="Service">
+
+        </subnote>
+        <subnote title="BroadcastReceiver">
+
+        </subnote>
+        <subnote title="ContentProvider">
+
+        </subnote>
+    </note>
+</notes>

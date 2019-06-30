@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">测试</string>
+    <string name="menu_function">功能(F)</string>
+    <string name="menu_test">测试(T)</string>
+    <string name="help">点击菜单中的条目</string>
+    <string name="start_record">录音</string>
+    <string name="title_record">录音</string>
+    <string name="back">后退</string>
+    <string name="camera_unavailable">不可用</string>
+    <string name="intro_message">introduct</string>
+</resources>

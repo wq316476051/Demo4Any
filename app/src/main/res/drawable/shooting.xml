@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+    <item android:drawable="@drawable/basketball1" android:duration="200" />
+    <item android:drawable="@drawable/basketball2" android:duration="200" />
+    <item android:drawable="@drawable/basketball3" android:duration="200" />
+    <item android:drawable="@drawable/basketball4" android:duration="200" />
+    <item android:drawable="@drawable/basketball5" android:duration="200" />
+    <item android:drawable="@drawable/basketball6" android:duration="200" />
+    <item android:drawable="@drawable/basketball7" android:duration="200" />
+    <item android:drawable="@drawable/basketball8" android:duration="200" />
+</animation-list>

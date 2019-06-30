@@ -24,10 +24,6 @@ buildscript { // 配置 ScriptHandler
         classpath "com.android.tools.build:gradle:${gradle_version}"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}"
     }
-
-    println "getSourceFile = " + getSourceFile()
-    println "getSourceURI = " + getSourceURI()
-    getDependencies().add(ScriptHandler.CLASSPATH_CONFIGURATION, "com.android.tools.build:gradle:${gradle_version}")
 }
 
 allprojects {
