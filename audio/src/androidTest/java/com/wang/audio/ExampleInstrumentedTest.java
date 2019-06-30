@@ -1,6 +1,7 @@
 package com.wang.audio;
 
 import android.content.Context;
+import android.media.ToneGenerator;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 

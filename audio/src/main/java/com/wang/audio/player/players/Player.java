@@ -10,5 +10,13 @@ public interface Player {
     void stop();
     void seekTo(long position);
 
+    static void hello() {
+
+    }
+
+    default void world() {
+        
+    }
+
     MediaMetadataCompat getCurrentMedia();
 }

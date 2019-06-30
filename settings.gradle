@@ -1,17 +1,26 @@
-//include ':app', ':rendarscript', ':unittest', ':gradle'
-//include ':app',':view', ':actionmode', ':actionbar', ':window', ':themeandstyle'
-//rootProject.name = 'Demo4Any'
+include ':app'
+//include ':anim'
 
-include ':app', ':activity'
-include ':storage'
-include ':libraries:lib1', ':libraries:lib2'
+//include ':jetpack:databinding'
+//include ':jetpack:lifecycle'
+//include ':jetpack:livedata'
+//include ':jetpack:navigation' // Jetpack中新增的，当前无法使用，gradle 4.6。Paging也是一样
+//include ':jetpack:room'
+//include ':jetpack:viewmodel'
+
+//include ':ui:view'
+//include ':ui:window'
+//include ':ui:themeandstyle'
+//include ':ui:actionbar'
+//include ':ui:actionmode'
+//include ':ui:activity'
+//include ':ui:picture'
+//include ':ui:notification'
+
+//include ':audio'
+
+//include ':network'
+
 
 //include ':runtimepermission'
-//include ':share'
 //include ':keyguard'
-
-include ':view'
-//include ':window', ':themeandstyle'
-//include ':actionmode', ':actionbar'
-
-include ':audio'

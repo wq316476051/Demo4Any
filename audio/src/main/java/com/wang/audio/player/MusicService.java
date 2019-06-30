@@ -3,6 +3,7 @@ package com.wang.audio.player;
 import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.ResultReceiver;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
@@ -17,7 +18,7 @@ import android.util.Log;
 import com.wang.audio.player.contentcatalogs.MusicLibrary;
 import com.wang.audio.player.notifications.MediaNotificationManager;
 import com.wang.audio.player.players.AbsPlayer;
-import com.wang.audio.player.players.media.MediaPlayerHelper;
+import com.wang.audio.player.players.media.MediaPlayerWrapper;
 import com.wang.audio.player.players.Player;
 
 import java.util.ArrayList;
@@ -42,14 +43,13 @@ public class MusicService extends MediaBrowserServiceCompat {
     public void onCreate() {
         super.onCreate();
         mSession = new MediaSessionCompat(this, "MusicService");
-        mCallback = new MediaSessionCallback();
-        mSession.setCallback(mCallback);
+        mSession.setCallback(mCallback = new MediaSessionCallback());
         mSession.setFlags(SESSION_FLAGS);
         setSessionToken(mSession.getSessionToken()); // MediaBrowserServiceCompat's method
 
         mMediaNotificationManager = new MediaNotificationManager(this);
 
-        mPlayer = new MediaPlayerHelper(this, new MediaPlayerListener());
+        mPlayer = new MediaPlayerWrapper(this, new MediaPlayerListener());
         Log.d(TAG, "onCreate: MusicService creating MediaSession, and MediaNotificationManager");
     }
 
@@ -59,7 +59,7 @@ public class MusicService extends MediaBrowserServiceCompat {
         mMediaNotificationManager.onDestroy();
         mPlayer.stop();
         mSession.release();
-        Log.d(TAG, "onDestroy: MediaPlayerAdapter stopped, and MediaSession released");
+        Log.d(TAG, "onDestroy: MediaPlayerWrapper stopped, and MediaSession released");
     }
 
     @Nullable
@@ -161,6 +161,19 @@ public class MusicService extends MediaBrowserServiceCompat {
 
         private boolean isReadyToPlay() {
             return (!mPlaylist.isEmpty());
+        }
+
+        @Override
+        public void onCommand(String command, Bundle extras, ResultReceiver cb) {
+            Log.d(TAG, "onCommand: command = " + command);
+            if ("change_stream_type".equals(command)) {
+                int stream_type = extras.getInt("stream_type");
+                if (mPlayer instanceof MediaPlayerWrapper) {
+                    MediaPlayerWrapper player = (MediaPlayerWrapper) mPlayer;
+                    player.test();
+                }
+            }
+            cb.send(3, null);
         }
     }
 

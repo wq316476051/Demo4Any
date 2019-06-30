@@ -5,4 +5,10 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="AppNoTitleTheme" parent="AppTheme">
+        <!-- Customize your theme here. -->
+
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
 </resources>

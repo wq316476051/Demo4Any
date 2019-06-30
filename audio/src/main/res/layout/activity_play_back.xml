@@ -51,6 +51,7 @@
         android:layout_width="192dp"
         android:layout_height="192dp"
         android:alpha=".9"
+        android:src="@drawable/ic_play_pause_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline"
@@ -98,7 +99,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent=".5" />
 
-    <com.wang.audio.ui.MediaSeekBar
+    <com.wang.audio.player.ui.MediaSeekBar
         android:id="@+id/seekbar_audio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -109,5 +110,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_change_stream_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Change Stream Type" />
 
 </android.support.constraint.ConstraintLayout>
